@@ -1,161 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Crazy Sidd's Music Player"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crazy Sidd's Music Player">
     <title>Crazy Sidd's Music Player</title>
-
-    <!-- Google Fonts -->
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Main Stylesheet -->
-    <link
-        rel="stylesheet"
-        href="styles.css"
-    >
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-    <!-- Loading Screen -->
-    <div
-        class="loading-screen"
-        id="loadingScreen"
-        role="status"
-        aria-label="Loading Crazy Sidd's Music Player"
-    >
+    <div class="loading-screen" id="loadingScreen" role="status" aria-label="Loading Crazy Sidd's Music Player">
         <div class="loading-mark">
-            <i
-                data-lucide="audio-waveform"
-                aria-hidden="true"
-            ></i>
+            <i data-lucide="audio-waveform" aria-hidden="true"></i>
         </div>
-
         <h1>Crazy Sidd's</h1>
         <p>Music Player</p>
-
         <span class="loading-line"></span>
     </div>
 
-    <!-- Ambient Background -->
     <div class="ambient a1"></div>
     <div class="ambient a2"></div>
 
-    <!-- Main Application -->
     <div class="app">
-
-        <!-- Header -->
+        
         <header class="topbar">
-
-            <button
-                class="icon mobile"
-                id="menu"
-                aria-label="Open menu"
-                title="Open menu"
-            >
+            <button class="icon mobile" id="menu" aria-label="Open menu" title="Open menu">
                 <i data-lucide="menu"></i>
             </button>
-
-            <button
-                class="brand"
-                data-route="home"
-            >
-                Crazy Sidd's
-                <span>Music Player</span>
+            
+            <button class="brand" data-route="home">
+                Crazy Sidd's <span>Music Player</span>
             </button>
-
+            
             <nav class="topnav">
-                <button
-                    data-route="home"
-                    class="active"
-                >
-                    <i data-lucide="house"></i>
-                    Home
+                <button data-route="home" class="active">
+                    <i data-lucide="house"></i>Home
                 </button>
-
                 <button data-route="browse">
-                    <i data-lucide="compass"></i>
-                    Browse
+                    <i data-lucide="compass"></i>Browse
                 </button>
-
                 <button data-route="radio">
-                    <i data-lucide="radio"></i>
-                    Radio
+                    <i data-lucide="radio"></i>Radio
                 </button>
             </nav>
-
+            
             <label class="search">
                 <i data-lucide="search"></i>
-
-                <input
-                    id="search"
-                    placeholder="Search"
-                    autocomplete="off"
-                >
-
+                <input id="search" placeholder="Search" autocomplete="off">
                 <kbd>⌘ K</kbd>
             </label>
-
-            <button
-                class="avatar"
-                title="Profile"
-            >
-                CS
-            </button>
-
+            
+            <button class="avatar" title="Profile">CS</button>
         </header>
 
-        <!-- Sidebar -->
-        <aside
-            class="sidebar"
-            id="sidebar"
-        >
-            <!-- Sidebar Content -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidehead mobile">
+                <b>Library</b>
+                <button class="icon" id="closeMenu" aria-label="Close menu">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            
+            <nav>
+                <button data-route="home" class="active">
+                    <i data-lucide="house"></i>Home
+                </button>
+                <button data-route="browse">
+                    <i data-lucide="compass"></i>Browse
+                </button>
+                <button data-route="radio">
+                    <i data-lucide="radio"></i>Radio
+                </button>
+                
+                <p>Your Library</p>
+                
+                <button data-route="favorites">
+                    <i data-lucide="heart"></i>Favourites
+                </button>
+                <button data-route="recent">
+                    <i data-lucide="history"></i>Recently Played
+                </button>
+            </nav>
+            
+            <div class="sidecard">
+                <i data-lucide="sparkles"></i>
+                <span>Pure sound.<br>No distractions.</span>
+            </div>
         </aside>
 
-        <!-- Main Content -->
-        <main
-            id="main"
-            tabindex="-1"
-        ></main>
+        <main id="main" tabindex="-1"></main>
 
-        <!-- Footer -->
         <footer class="site-footer">
             <span>Designed &amp; created by</span>
             <strong>Siddhartha Kotnaka</strong>
-
-            <i
-                data-lucide="music-2"
-                aria-hidden="true"
-            ></i>
+            <i data-lucide="music-2" aria-hidden="true"></i>
         </footer>
-
     </div>
 
+    <aside class="queue" id="queue">
+        <header>
+            <div>
+                <p class="eyebrow">Playing next</p>
+                <h2>Up Next</h2>
+            </div>
+            <button class="icon" id="closeQueue" aria-label="Close queue">
+                <i data-lucide="x"></i>
+            </button>
+        </header>
+        <div id="queueList"></div>
+    </aside>
+
+    <div class="scrim" id="scrim"></div>
+
+    <footer class="player">
+        <button class="playing" id="openCurrent">
+            <img id="pArt" src="assets/afterglow.png" alt="Current Track Art">
+            <span>
+                <strong id="pTitle">Afterglow</strong>
+                <small id="pArtist">Lunara</small>
+            </span>
+        </button>
+        
+        <div class="playercenter">
+            <div class="transport">
+                <button class="icon" id="shuffle" title="Shuffle" aria-label="Shuffle">
+                    <i data-lucide="shuffle"></i>
+                </button>
+                <button class="icon" id="prev" title="Previous" aria-label="Previous">
+                    <i data-lucide="skip-back"></i>
+                </button>
+                <button class="play" id="play" title="Play" aria-label="Play">
+                    <i data-lucide="play"></i>
+                </button>
+                <button class="icon" id="next" title="Next" aria-label="Next">
+                    <i data-lucide="skip-forward"></i>
+                </button>
+                <button class="icon" id="repeat" title="Repeat" aria-label="Repeat">
+                    <i data-lucide="repeat-2"></i>
+                </button>
+            </div>
+            
+            <div class="timeline">
+                <span id="current">0:00</span>
+                <input id="progress" type="range" min="0" max="100" value="0" aria-label="Track progress">
+                <span id="duration">3:48</span>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <button class="icon" id="favCurrent" title="Favourite" aria-label="Favourite">
+                <i data-lucide="heart"></i>
+            </button>
+            <button class="icon" id="queueBtn" title="Up next" aria-label="Up next">
+                <i data-lucide="list-music"></i>
+            </button>
+            <i data-lucide="volume-2"></i>
+            <input id="volume" type="range" min="0" max="100" value="72" aria-label="Volume">
+        </div>
+    </footer>
+
+    <audio id="audio" preload="metadata"></audio>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script>
+        const hideLoadingScreen = () => {
+            const loader = document.getElementById("loadingScreen");
+            if (loader) {
+                loader.classList.add("loaded");
+                setTimeout(() => {
+                    loader.remove();
+                }, 650);
+            }
+        };
+        
+        window.addEventListener("load", hideLoadingScreen);
+        setTimeout(hideLoadingScreen, 4000);
+    </script>
+    
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
